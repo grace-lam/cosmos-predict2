@@ -16,7 +16,6 @@
 import random
 from typing import Callable, Optional, Tuple, cast
 
-import attrs
 import torch
 import torch.distributed as dist
 from einops import rearrange
