@@ -262,8 +262,9 @@ class Video2WorldPipeline(BasePipeline):
         self.width_division_factor = 16
         self.use_unified_sequence_parallel = False
 
-    @staticmethod
+    @classmethod
     def from_config(
+        cls,
         config: Video2WorldPipelineConfig,
         dit_path: str = "",
         text_encoder_path: str = "",
@@ -272,7 +273,7 @@ class Video2WorldPipeline(BasePipeline):
         load_prompt_refiner: bool = False,
     ) -> Any:
         # Create a pipe
-        pipe = Video2WorldPipeline(device=device, torch_dtype=torch_dtype)
+        pipe = cls(device=device, torch_dtype=torch_dtype)
         pipe.config = config
         pipe.precision = {
             "float32": torch.float32,
